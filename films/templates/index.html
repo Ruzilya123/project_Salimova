@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Список товаров</title>
+</head>
+
+<body>
+    {% csrf_token %}
+    <a class="a" href="{% url 'signup' %}">Sign Up</a>
+    <a class="a" href="{% url 'login' %}">Login</a>
+    <h2>Афиша для кинотеатра</h2>
+    <table>
+        <thead>
+            <th>Название</th>
+            <th>Актёры</th>
+            <th>Дата выпуска</th>
+            <th>Дата показа фильма</th>
+            <th>Категория(жанр)</th>
+            <th>Удалить</th>
+            <th>Изменить</th>
+        </thead>
+        {% for film in films %}
+        <tr>
+            <td>{{ film.name }}</td>
+            <td>{{ film.actors }}</td>
+            <td>{{ film.release_date }}</td>
+            <td>{{ film.show_date }}</td>
+            <td>{{ film.category.name }}</td>{% if user.is_authenticated %}
+            <td><a href="delete/{{ film.pk }}">Удалить</a></td>
+            <td><a href="edit/{{ film.pk }}">Изменить</a></td>    {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+    <table>
+        <th>Категория(жанр)</th>
+        <td>Боевик</td>
+        <td>Детектив</td>
+        <td>Комедия</td>
+        <td>Драма</td>
+    </table>
+</body>
+
+</html>

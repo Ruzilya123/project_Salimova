@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url('../image/bg.jpeg') no-repeat;
+}
+
+table {
+    width: 300px;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 3px;
+    border: 1px solid black;
+}
+
+th {
+    background: #b0e0e6;
+}
+
+.but {
+    text-decoration: none;
+}
